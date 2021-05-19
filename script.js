@@ -75,7 +75,7 @@ var isGameFinished = function (playersPlaying) {
     playing = playing || playersPlaying[i];
   }
 
-  return playing;
+  return !playing;
 };
 //evaluate for each round
 var playerPlayStatus = function (number, playerId, playersPlaying) {
@@ -172,6 +172,7 @@ var outputStringStatus = function (numOfPlayers, comPlayerCards) {
 //if dealer>21 everyplayer in round wins double bet
 //if not, only player hand> dealer wins twice bet
 //everyone else loses bet
+var playerhitting = 0;
 var main = function (input) {
   var output = "";
   // if (shuffledDeck.length<)
@@ -225,7 +226,7 @@ var main = function (input) {
     } else {
       playerString = input.split(",");
       for (var i = 0; i < playerString.length; i++) {
-        var playerhitting = Number(playerString[i]);
+        playerhitting = Number(playerString[i]);
         if (shuffledDeck == 0) {
           return `no more cards to deal`;
         }
@@ -238,6 +239,13 @@ var main = function (input) {
     output += outputStringStatus(numOfPlayers, comPlayerCards);
     return output;
   }
+  //split mode focus on players that split, player given option to split when they have two of the same suit of card
+  //make method for checking if cards are identical
+  //if identical, make new array for special player , have them bet for each hand,
+  //let them split until satisfied
+  //go back to dealingX mode when they choose not to split, input array of array into comPlayercards
+  //subsequent strings has to be able to evaluate if
+
   //output strings
   //need to include condition for when deck has no more cards
   if (gameMode == "finishGame") {
