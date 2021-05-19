@@ -174,6 +174,7 @@ var outputStringStatus = function (numOfPlayers, comPlayerCards) {
 //everyone else loses bet
 var main = function (input) {
   var output = "";
+  // if (shuffledDeck.length<)
   if (gameMode == "toStart") {
     shuffledDeck = shuffleDeck(deck());
     if (isNaN(Number(input))) {
@@ -184,7 +185,7 @@ var main = function (input) {
       //computer dealer+ num of players
       for (var i = 0; i <= numOfPlayers; i++) {
         comPlayerCards.push([]);
-        comPlayerLoot.push(0);
+        comPlayerLoot.push(100);
         comPlayerScore.push(0);
         playersPlaying.push(true);
       }
@@ -238,7 +239,7 @@ var main = function (input) {
     return output;
   }
   //output strings
-
+  //need to include condition for when deck has no more cards
   if (gameMode == "finishGame") {
     numOfgames++;
     var computerHand = sumOfHand(comPlayerCards[0]);
@@ -269,6 +270,7 @@ var main = function (input) {
     }
     output += `will start a new game no. ${numOfgames}.<br><br>`;
     output += outputStringStatus(numOfPlayers, comPlayerCards);
+
     gameMode = "dealing";
 
     //reset variables
@@ -276,6 +278,7 @@ var main = function (input) {
     comPlayerCards = new Array();
     playersPlaying = new Array();
     for (var i = 0; i <= numOfPlayers; i++) {
+      shuffledDeck = shuffleDeck(deck());
       comPlayerCards.push([]);
       comPlayerScore.push(0);
       playersPlaying.push(true);
