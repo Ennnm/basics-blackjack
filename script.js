@@ -55,14 +55,17 @@ var shuffleDeck = function (deck) {
 
 var sumOfHand = function (cardHand) {
   var sum = 0;
+  var numAces = 0;
   var acePresent = false;
   for (var i = 0; i < cardHand.length; i++) {
-    if (cardHand[i].rank == 1) acePresent = true;
+    if (cardHand[i].rank == 1) numAces += 1;
     sum += cardHand[i].rank;
   }
   //decide now or decide via user input?
-  if (acePresent == true && sum < 12) {
-    sum += 10;
+  for (var i = 0; i < numAces; i++) {
+    if (sum < 12) {
+      sum += 10;
+    }
   }
   return sum;
 };
