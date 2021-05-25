@@ -223,6 +223,7 @@ var main = function (input) {
     return output;
   } else if (gameMode == "dealingExtra") {
     console.log(`dealingX`);
+    //hello
 
     if (input.length == 0) {
       gameMode = "finishGame";
